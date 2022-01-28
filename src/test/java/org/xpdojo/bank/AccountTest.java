@@ -31,7 +31,17 @@ public class AccountTest {
     }
 
     @Test
-    public void withdraw() {
+    public void withdraw_withBalance() {
+        Account account = emptyAccount();
+        account.deposit(20);
+        assertThat(account.getBalance()).isEqualTo(20);
+        boolean isActionSuccessful = account.withdraw(10);
+        assertThat(account.getBalance()).isEqualTo(10);
+        assertThat(isActionSuccessful).isEqualTo(true);
+    }
+
+    @Test
+    public void withdraw_withNoBalance() {
         Account account = emptyAccount();
         boolean isActionSuccessful = account.withdraw(10);
         assertThat(account.getBalance()).isEqualTo(0);
