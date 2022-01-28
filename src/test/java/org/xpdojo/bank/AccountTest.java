@@ -20,4 +20,13 @@ public class AccountTest {
         account.deposit(10);
         assertThat(account.getBalance()).isEqualTo(10);
     }
+
+    @Test
+    public void deposit_WithNonZeroBalance() {
+        Account account = emptyAccount();
+        account.deposit(10);
+        assertThat(account.getBalance()).isEqualTo(10);
+        account.deposit(20);
+        assertThat(account.getBalance()).isEqualTo(30);
+    }
 }
