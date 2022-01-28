@@ -13,4 +13,11 @@ public class AccountTest {
         Account account = emptyAccount();
         assertThat(account.getBalance()).isEqualTo(0);
     }
+
+    @Test
+    public void deposit() {
+        Account account = emptyAccount();
+        account.deposit(10);
+        assertThat(account.getBalance()).isEqualTo(10);
+    }
 }
