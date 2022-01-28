@@ -29,4 +29,12 @@ public class AccountTest {
         account.deposit(20);
         assertThat(account.getBalance()).isEqualTo(30);
     }
+
+    @Test
+    public void withdraw() {
+        Account account = emptyAccount();
+        boolean isActionSuccessful = account.withdraw(10);
+        assertThat(account.getBalance()).isEqualTo(0);
+        assertThat(isActionSuccessful).isEqualTo(false);
+    }
 }

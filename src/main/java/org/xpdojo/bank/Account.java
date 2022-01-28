@@ -16,4 +16,13 @@ public class Account {
     public void deposit(int amount) {
         balance += amount;
     }
+
+    public boolean withdraw(int amount) {
+        boolean canBeWithdrawn = false;
+        if ((balance - amount) > 0) {
+            canBeWithdrawn = true;
+            balance -= amount;
+        }
+        return canBeWithdrawn;
+    }
 }
