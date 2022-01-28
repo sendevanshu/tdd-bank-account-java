@@ -26,4 +26,11 @@ public class Account {
         return canBeWithdrawn;
     }
 
+    public boolean transfer(Account account, int amount) {
+        boolean canBeTransfer = withdraw(amount);
+        if (canBeTransfer) {
+            account.deposit(amount);
+        }
+        return canBeTransfer;
+    }
 }

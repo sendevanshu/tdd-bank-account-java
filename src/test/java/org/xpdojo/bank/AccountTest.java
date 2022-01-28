@@ -47,4 +47,24 @@ public class AccountTest {
         assertThat(account.getBalance()).isEqualTo(0);
         assertThat(isActionSuccessful).isEqualTo(false);
     }
+
+    @Test
+    public void transfer_withBalance() {
+        Account accountA = emptyAccount();
+        Account accountB = emptyAccount();
+        accountA.deposit(20);
+        assertThat(accountA.getBalance()).isEqualTo(20);
+        boolean isActionSuccessful = accountA.transfer(accountB, 10);
+        assertThat(isActionSuccessful).isEqualTo(true);
+        assertThat(accountA.getBalance()).isEqualTo(10);
+        assertThat(accountB.getBalance()).isEqualTo(10);
+    }
+
+    @Test
+    public void transfer_withNoBalance() {
+        Account accountA = emptyAccount();
+        Account accountB = emptyAccount();
+        boolean isActionSuccessful = accountA.transfer(accountB, 10);
+        assertThat(isActionSuccessful).isEqualTo(false);
+    }
 }
